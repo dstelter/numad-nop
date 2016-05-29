@@ -1,0 +1,13 @@
+Source: numad-nop
+Section: admin
+Priority: optional
+Maintainer: Daniel Stelter-Gliese <ds@siriuswhite.de>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+Homepage: https://github.com/dstelter/numad-nop
+
+Package: numad-nop
+Architecture: all
+Depends: ${misc:Depends}
+Conflicts: numad
+Description: NOP implementation of numad for CLI queries

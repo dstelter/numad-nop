@@ -1,0 +1,15 @@
+#!/bin/sh
+# Existing libvirt VMs are often configured to query numad to determine suitable CPUs to run on.
+# Since we've purged numad, these VMs cannot be migrated anymore. The target HV will run numad,
+# which will fail, and the entire migration fails with "Invalid bitmask: ".
+# Thus we have this dummy numad binary that always replies with all available nodes.
+set -e
+
+if [ "$1" != "-w" ]; then
+    echo "Usage: numad -w NCPU:MB" >&2
+    echo "This dummy version of numad will always return all available nodes." >&2
+    exit 1
+fi
+
+cat /sys/devices/system/node/online
+
